@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background-color: rgb(240 185 74 / 0.28);
+    color: var(--color-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-surface-raised) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 2px solid var(--color-background);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface-raised);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-line-gold);
+  }
+}
+
+@layer components {
+  /* Fixed, layered arena atmosphere behind every screen. */
+  .arena-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse 70% 48% at 50% -12%,
+        rgb(240 185 74 / 0.14),
+        transparent 68%
+      ),
+      radial-gradient(
+        ellipse 45% 38% at 88% 12%,
+        rgb(92 104 148 / 0.13),
+        transparent 72%
+      ),
+      radial-gradient(
+        ellipse 50% 45% at 6% 84%,
+        rgb(84 63 30 / 0.14),
+        transparent 72%
+      ),
+      linear-gradient(180deg, #08090d 0%, #08090d 58%, #050609 100%);
+  }
+
+  .arena-backdrop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgb(245 243 237 / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(245 243 237 / 0.035) 1px, transparent 1px);
+    background-size: 5rem 5rem;
+    mask-image: radial-gradient(
+      ellipse 85% 60% at 50% 0%,
+      black 5%,
+      transparent 78%
+    );
+    opacity: 0.75;
+  }
+
+  .arena-backdrop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse 60% 50% at 50% 45%,
+        transparent 42%,
+        rgb(5 6 9 / 0.62) 100%
+      ),
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 86%,
+        rgb(5 6 9 / 0.9) 100%
+      );
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+
+  .text-gradient-gold {
+    background-image: linear-gradient(
+      180deg,
+      #fff6dd 0%,
+      var(--color-gold-bright) 32%,
+      var(--color-gold) 62%,
+      var(--color-gold-deep) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .arena-grid {
+    background-image:
+      linear-gradient(to right, rgb(245 243 237 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(245 243 237 / 0.06) 1px, transparent 1px);
+    background-size: 3rem 3rem;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent 74%);
+  }
+
+  .hairline {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(240 185 74 / 0.35) 30%,
+      rgb(245 243 237 / 0.14) 70%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

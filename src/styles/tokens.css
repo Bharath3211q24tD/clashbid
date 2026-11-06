@@ -1,0 +1,136 @@
+/*
+ * CLASHBID design tokens
+ * Consumed by Tailwind CSS v4 through @theme. Keep raw values here so the
+ * visual language can evolve without hunting through components.
+ */
+
+@theme {
+  /* Palette ------------------------------------------------------------- */
+  --color-background: #08090d;
+  --color-background-deep: #050609;
+  --color-elevated: #10131a;
+  --color-surface: #171b24;
+  --color-surface-raised: #1d2230;
+  --color-gold: #f0b94a;
+  --color-gold-bright: #ffd778;
+  --color-gold-deep: #a77a2a;
+  --color-gold-soft: rgb(240 185 74 / 0.12);
+  --color-foreground: #f5f3ed;
+  --color-muted: #a5a9b2;
+  --color-subtle: #7f8490;
+  --color-line: rgb(245 243 237 / 0.08);
+  --color-line-strong: rgb(245 243 237 / 0.16);
+  --color-line-gold: rgb(240 185 74 / 0.28);
+  --color-success: #6ecf9b;
+  --color-danger: #e2565b;
+
+  /* Typography ---------------------------------------------------------- */
+  --font-display: var(--font-rajdhani), "Rajdhani", "Segoe UI", sans-serif;
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --text-display-2xl: clamp(3.25rem, 7.5vw, 6rem);
+  --text-display-2xl--line-height: 0.92;
+  --text-display-2xl--letter-spacing: -0.03em;
+  --text-display-2xl--font-weight: 600;
+
+  --text-display-xl: clamp(2.75rem, 6vw, 4.5rem);
+  --text-display-xl--line-height: 0.96;
+  --text-display-xl--letter-spacing: -0.025em;
+  --text-display-xl--font-weight: 600;
+
+  --text-display-lg: clamp(2.125rem, 4vw, 3.25rem);
+  --text-display-lg--line-height: 1;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 600;
+
+  --text-display-md: clamp(1.625rem, 2.5vw, 2.125rem);
+  --text-display-md--line-height: 1.08;
+  --text-display-md--letter-spacing: -0.015em;
+  --text-display-md--font-weight: 600;
+
+  --text-display-sm: 1.3125rem;
+  --text-display-sm--line-height: 1.15;
+  --text-display-sm--letter-spacing: 0.01em;
+  --text-display-sm--font-weight: 600;
+
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.28em;
+  --text-eyebrow--font-weight: 600;
+
+  /* Radius -------------------------------------------------------------- */
+  --radius-control: 0.625rem;
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+  --radius-pill: 9999px;
+
+  /* Layout rhythm ------------------------------------------------------- */
+  --spacing-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --spacing-section: clamp(4.5rem, 9vw, 8rem);
+  --spacing-header: 4.5rem;
+
+  /* Elevation ----------------------------------------------------------- */
+  --shadow-card: 0 28px 60px -36px rgb(0 0 0 / 0.95);
+  --shadow-float: 0 32px 80px -32px rgb(0 0 0 / 0.9);
+  --shadow-glow: 0 0 48px -14px rgb(240 185 74 / 0.38);
+  --shadow-glow-strong: 0 0 72px -16px rgb(240 185 74 / 0.55);
+
+  /* Motion -------------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-up: fade-up 0.8s var(--ease-out-expo) both;
+  --animate-fade-in: fade-in 0.6s var(--ease-out-expo) both;
+  --animate-glow-pulse: glow-pulse 6s ease-in-out infinite;
+  --animate-scan: scan 7s linear infinite;
+  --animate-float: float 9s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-120%);
+  }
+  100% {
+    transform: translateY(600%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -0.75rem, 0);
+  }
+}
